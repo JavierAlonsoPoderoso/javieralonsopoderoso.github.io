@@ -1,0 +1,35 @@
+.dev-bg {
+    min-height: 60vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+    #111827;
+}
+
+.projects-grid {
+    padding: 5rem 5%;
+    display: grid;
+    gap: 2rem;
+}
+
+.dev-project {
+    overflow: hidden;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+}
+
+.project-image {
+    height: 280px;
+    background: linear-gradient(135deg, #1f2937, #0f172a);
+}
+
+.project-info {
+    padding: 2rem;
+}
+
+.tech-list {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
