@@ -1,82 +1,188 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Game Dev / QA / Design</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javier Alonso — Game Dev · Arte 3D · QA</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Fuentes: Syne (headings) + DM Sans (body) — Open Font License -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 </head>
 <body class="home-page">
 
-    <header class="hero">
-        <nav class="navbar">
-            <h1 class="logo">JAVIER<span>.DEV</span></h1>
+  <!-- ══════════════════════════════════════════════════════
+       BANNER DE ANUNCIO
+       Cambia el texto aquí para comunicados.
+       Para ocultarlo añade: style="display:none"
+       ══════════════════════════════════════════════════════ -->
+  <div class="site-banner" id="site-banner">
+    <span>🚧 Portfolio en construcción — se irán añadiendo proyectos progresivamente.</span>
+    <button class="site-banner-close" aria-label="Cerrar aviso">✕</button>
+  </div>
 
-            <ul class="nav-links">
-                <li><a href="#about">Sobre mí</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </nav>
+  <!-- ══════════════════════════════════════════════════════
+       NAVBAR
+       ══════════════════════════════════════════════════════ -->
+  <nav class="navbar">
+    <span class="navbar-logo">JAVIER<span>.DEV</span></span>
 
-        <div class="hero-content">
-            <p class="tag">GAME DEV · QA · DESIGN</p>
-            <h2>Portfolio profesional enfocado en videojuegos</h2>
-            <p class="description">
-                Desarrollo de videojuegos, QA testing y diseño de sistemas.
-                Un portfolio dividido por modos para mostrar cada perfil de forma clara.
-            </p>
+    <ul class="navbar-links">
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </nav>
 
-            <div class="mode-grid">
-                <a href="qa.html" class="mode-card qa-card">
-                    <span>01</span>
-                    <h3>QA Testing</h3>
-                    <p>Bug reports · Test plans · QA methodology</p>
-                </a>
+  <!-- ══════════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════════ -->
+  <header class="hero page-offset">
 
-                <a href="dev.html" class="mode-card dev-card">
-                    <span>02</span>
-                    <h3>Development</h3>
-                    <p>Unity · C# · Gameplay systems · GitHub</p>
-                </a>
+    <div class="hero-content">
 
-                <a href="design.html" class="mode-card design-card">
-                    <span>03</span>
-                    <h3>Game Design</h3>
-                    <p>GDD · Systems · Wireframes · UX</p>
-                </a>
-            </div>
-        </div>
-    </header>
+      <!-- Avatar / logo placeholder -->
+      <div class="hero-avatar" aria-label="Logo placeholder">
+        JAP
+      </div>
 
-    <section id="about" class="section">
-        <div class="section-title">
-            <p>ABOUT</p>
-            <h2>Sobre mí</h2>
-        </div>
+      <p class="label hero-label">GAME DEV · ARTE 3D · QA TESTER</p>
 
-        <div class="about-grid">
-            <div class="about-card">
-                <h3>Desarrollo</h3>
-                <p>
-                    Desarrollo de prototipos y sistemas gameplay usando Unity y C#.
-                </p>
-            </div>
+      <h1 class="hero-title">
+        <span class="name-main">Javier Alonso</span>
+        <span class="name-sub">Poderoso</span>
+      </h1>
 
-            <div class="about-card">
-                <h3>QA Testing</h3>
-                <p>
-                    Testing estructurado con documentación profesional y reproducción de bugs.
-                </p>
-            </div>
+      <p class="hero-tagline">
+        Desarrollador backend especializado en videojuegos, artista 3D y QA Game Tester.
+        Construyo los sistemas que mantienen los mundos en pie, los activos visuales
+        que los pueblan y me aseguro de que todo funcione como debe.
+      </p>
 
-            <div class="about-card">
-                <h3>Diseño</h3>
-                <p>
-                    Diseño de mecánicas, progression systems y documentación técnica.
-                </p>
-            </div>
-        </div>
+      <!-- Tarjetas de modo — las tres puertas del portfolio -->
+      <div class="mode-grid">
+
+        <a href="qa.html" class="mode-card qa">
+          <span class="mode-card-number">01 · QA TESTING</span>
+          <h3>QA Testing</h3>
+          <p>Bug reports · Test plans · Metodología · Evidencias visuales</p>
+          <span class="mode-card-arrow">Ver proyectos →</span>
+        </a>
+
+        <a href="dev.html" class="mode-card dev">
+          <span class="mode-card-number">02 · DESARROLLO</span>
+          <h3>Game Dev</h3>
+          <p>Unity · C# · Sistemas de gameplay · GitHub · itch.io</p>
+          <span class="mode-card-arrow">Ver proyectos →</span>
+        </a>
+
+        <a href="art3d.html" class="mode-card art">
+          <span class="mode-card-number">03 · ARTE 3D</span>
+          <h3>Arte 3D</h3>
+          <p>Modelado · Render · Animación · Estilo anime/2D en 3D</p>
+          <span class="mode-card-arrow">Ver proyectos →</span>
+        </a>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════
+       SOBRE MÍ
+       ══════════════════════════════════════════════════════ -->
+  <section id="about" class="about-section">
+
+    <div class="about-text">
+      <p class="label section-label">SOBRE MÍ</p>
+      <h2>Un perfil<br>multidisciplinar</h2>
+      <p>
+        Me muevo entre el código, el arte y el testing porque creo que entender
+        las tres capas de un videojuego te convierte en un profesional más completo.
+      </p>
+      <p>
+        Actualmente en fase de formación activa, construyendo proyectos reales
+        para cada una de las áreas y documentando el proceso aquí.
+      </p>
+    </div>
+
+    <div class="about-skills">
+      <!-- Añade o quita pills según tus skills reales -->
+
+      <div class="skill-pill">
+        <span class="skill-pill-dot" style="background:var(--dev-accent)"></span>
+        Unity · C# · Game Systems
+      </div>
+      <div class="skill-pill">
+        <span class="skill-pill-dot" style="background:var(--dev-accent)"></span>
+        Backend · Python · Bases de datos
+      </div>
+      <div class="skill-pill">
+        <span class="skill-pill-dot" style="background:var(--art-accent)"></span>
+        Modelado 3D · Render · Animación
+      </div>
+      <div class="skill-pill">
+        <span class="skill-pill-dot" style="background:var(--art-accent)"></span>
+        Estilo flat 2D en entorno 3D
+      </div>
+      <div class="skill-pill">
+        <span class="skill-pill-dot" style="background:var(--qa-accent)"></span>
+        QA Testing · Bug reports · TestRail
+      </div>
+      <div class="skill-pill">
+        <span class="skill-pill-dot" style="background:var(--qa-accent)"></span>
+        Git · GitHub · Documentación
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       CONTACTO
+       ══════════════════════════════════════════════════════ -->
+  <section id="contact" class="contact-section">
+
+    <div class="contact-text">
+      <h2>Hablemos</h2>
+      <p>
+        ¿Tienes un proyecto, una propuesta o simplemente quieres conectar?
+        Puedes encontrarme aquí:
+      </p>
+    </div>
+
+    <div class="contact-links">
+
+      <!-- EMAIL — sustituye el placeholder cuando tengas correo -->
+      <a class="contact-link" href="mailto:placeholder@email.com">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        <span class="contact-link-placeholder">email@tudominio.com</span>
+      </a>
+
+      <!-- GITHUB — sustituye "#" por tu URL -->
+      <a class="contact-link" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <span class="contact-link-placeholder">github.com/tu-usuario</span>
+      </a>
+
+      <!-- LINKEDIN — sustituye "#" por tu URL -->
+      <a class="contact-link" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <span class="contact-link-placeholder">linkedin.com/in/tu-perfil</span>
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <span>© 2025 Javier Alonso Poderoso</span>
+    <span>Hecho con HTML · CSS · JS — sin frameworks</span>
+  </footer>
+
+  <script src="main.js"></script>
+
+</body>
 </html>

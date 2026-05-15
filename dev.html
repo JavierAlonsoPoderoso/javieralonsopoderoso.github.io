@@ -1,66 +1,160 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Development Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Dev — Javier Alonso</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 </head>
 <body class="dev-page">
 
-    <header class="sub-hero dev-bg">
-        <nav class="navbar">
-            <a href="index.html" class="logo">JAVIER<span>.DEV</span></a>
-        </nav>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-back">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Inicio
+    </a>
+    <span class="navbar-logo">JAVIER<span>.DEV</span></span>
+  </nav>
 
-        <div class="sub-hero-content">
-            <p>MODE 02</p>
-            <h1>Game Development</h1>
-            <p>
-                Proyectos centrados en gameplay systems, prototipos y desarrollo en Unity.
-            </p>
+  <!-- HERO DE SUB-PÁGINA -->
+  <header class="sub-hero dev-hero page-offset">
+    <p class="sub-hero-mode dev">MODE 02 · DESARROLLO</p>
+    <h1>Game Dev</h1>
+    <p class="sub-hero-desc">
+      Proyectos centrados en gameplay systems, prototipos y desarrollo backend.
+      Cada entrada incluye descripción técnica, stack y enlace al repositorio.
+    </p>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECCIÓN DE PROYECTOS
+       Para añadir un proyecto: copia un .project-card completo,
+       actualiza los data-id y añade el objeto en PROJECTS_DEV de abajo.
+       ══════════════════════════════════════════════════════ -->
+  <section class="projects-section">
+
+    <div class="projects-section-header">
+      <div>
+        <p class="label">PROYECTOS</p>
+        <h2>Juegos & Sistemas</h2>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- ── PROYECTO 1 ─────────────────────────────────── -->
+      <article class="project-card"
+        data-id="dev-001"
+        onclick="openFlyout(PROJECTS_DEV['dev-001'])">
+
+        <div class="project-card-thumb">
+          <!-- Cuando tengas imagen: <img src="assets/images/dev-001.png" alt="Platformer prototype"> -->
+          <!-- Para GIF de gameplay: <img class="project-gif" src="assets/images/dev-001.gif" alt="Gameplay"> -->
+          CAPTURA / GIF
         </div>
-    </header>
 
-    <section class="projects-grid">
+        <p class="project-card-type">UNITY · C#</p>
+        <h3>2D Platformer Prototype</h3>
+        <p>Sistema de movimiento fluido con raycasts y control avanzado de colisiones. Input buffering para salto más responsivo.</p>
 
-        <article class="dev-project">
-            <div class="project-image"></div>
+        <div class="project-card-footer">
+          <div class="project-card-tags">
+            <span>Unity</span>
+            <span>C#</span>
+            <span>Git</span>
+          </div>
+          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
+        </div>
+      </article>
 
-            <div class="project-info">
-                <p class="project-type">UNITY · C#</p>
-                <h2>2D Platformer Prototype</h2>
-                <p>
-                    Sistema de movimiento fluido con raycasts y control avanzado de colisiones.
-                </p>
+      <!-- ── PROYECTO 2 ─────────────────────────────────── -->
+      <article class="project-card"
+        data-id="dev-002"
+        onclick="openFlyout(PROJECTS_DEV['dev-002'])">
 
-                <div class="tech-list">
-                    <span>Unity</span>
-                    <span>C#</span>
-                    <span>Git</span>
-                </div>
-            </div>
-        </article>
+        <div class="project-card-thumb">
+          CAPTURA / GIF
+        </div>
 
-        <article class="dev-project">
-            <div class="project-image"></div>
+        <p class="project-card-type">WEB GAME · JS</p>
+        <h3>JavaScript Arcade</h3>
+        <p>Mini-juego arcade desarrollado con HTML, CSS y JavaScript puro. Sin frameworks, sin dependencias.</p>
 
-            <div class="project-info">
-                <p class="project-type">WEB GAME</p>
-                <h2>JavaScript Arcade</h2>
-                <p>
-                    Mini-juego arcade desarrollado con HTML, CSS y JavaScript puro.
-                </p>
+        <div class="project-card-footer">
+          <div class="project-card-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
+        </div>
+      </article>
 
-                <div class="tech-list">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                </div>
-            </div>
-        </article>
+      <!-- ── PLACEHOLDER ────────────────────────────────── -->
+      <article class="project-card project-card-empty">
+        <div class="project-card-thumb">PRÓXIMAMENTE</div>
+        <p class="project-card-type">EN PROGRESO</p>
+        <h3>Nuevo proyecto Dev</h3>
+        <p>Se añadirá cuando esté jugable y documentado.</p>
+        <div class="project-card-footer">
+          <div class="project-card-tags"><span>WIP</span></div>
+        </div>
+      </article>
 
-    </section>
+    </div>
+  </section>
+
+  <!-- FLYOUT -->
+  <div class="flyout-overlay" id="flyout-overlay">
+    <aside class="flyout-panel" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
+    </aside>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       DATOS DE PROYECTOS DEV
+       ══════════════════════════════════════════════════════ -->
+  <script>
+    const PROJECTS_DEV = {
+
+      'dev-001': {
+        type: 'UNITY · C#',
+        title: '2D Platformer Prototype',
+        desc: 'Prototipo de platformer 2D con sistema de movimiento basado en raycasts. El problema principal era que el personaje resbalaba en bordes al cambiar de dirección; lo resolví con input buffering de 0.1s para el salto y detección de suelo por múltiples raycasts.',
+        tags: ['Unity 2023.2', 'C#', 'Git', 'Physics2D', 'Raycast'],
+        extra: `
+          <div class="flyout-divider"></div>
+          <p class="flyout-meta-label">Problema → Solución</p>
+          <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.7; margin-top:0.5rem;">
+            <strong style="color:var(--text-primary);">Problema:</strong> El personaje rebotaba en bordes de plataforma al cambiar de dirección.<br>
+            <strong style="color:var(--text-primary);">Solución:</strong> Detección por raycast múltiple + input buffering de 0.1s.<br>
+            <strong style="color:var(--text-primary);">Resultado:</strong> 0 glitches en 50+ horas de test interno.
+          </p>
+        `,
+        links: [
+          // { label: 'Ver en GitHub', url: '#', icon: 'github' },
+          // { label: 'Jugar en itch.io', url: '#', icon: 'itch' }
+        ]
+      },
+
+      'dev-002': {
+        type: 'WEB GAME · JS',
+        title: 'JavaScript Arcade',
+        desc: 'Mini-juego arcade desarrollado con HTML5 Canvas, CSS y JavaScript puro. Sin frameworks ni dependencias externas. Demuestra dominio del game loop, detección de colisiones y gestión de estado.',
+        tags: ['HTML5', 'CSS3', 'JavaScript', 'Canvas API'],
+        links: [
+          // { label: 'Ver en GitHub', url: '#', icon: 'github' },
+          // { label: 'Jugar online', url: '#', icon: 'external' }
+        ]
+      }
+
+    };
+  </script>
+
+  <script src="main.js"></script>
 
 </body>
 </html>

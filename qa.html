@@ -1,77 +1,207 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QA Testing Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QA Testing — Javier Alonso</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 </head>
 <body class="qa-page">
 
-    <header class="sub-hero qa-bg">
-        <nav class="navbar">
-            <a href="index.html" class="logo">JAVIER<span>.DEV</span></a>
-        </nav>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-back">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Inicio
+    </a>
+    <span class="navbar-logo">JAVIER<span>.DEV</span></span>
+  </nav>
 
-        <div class="sub-hero-content">
-            <p>MODE 01</p>
-            <h1>QA Testing</h1>
-            <p>
-                Testing estructurado para videojuegos con enfoque en metodología,
-                documentación y reproducción de bugs.
-            </p>
-        </div>
-    </header>
+  <!-- HERO DE SUB-PÁGINA -->
+  <header class="sub-hero qa-hero page-offset">
+    <p class="sub-hero-mode qa">MODE 01 · QA TESTING</p>
+    <h1>QA Testing</h1>
+    <p class="sub-hero-desc">
+      Testing estructurado de videojuegos con enfoque en metodología, documentación
+      y reproducción de bugs. Cada reporte aquí sigue formato profesional real.
+    </p>
+  </header>
 
-    <section class="projects-section">
-        <div class="project-card-large">
-            <div>
-                <p class="project-type">BUG REPORT</p>
-                <h2>Platform Collision Issue</h2>
-                <p>
-                    Reporte completo de colisión defectuosa en slopes dentro de un platformer 2D.
-                </p>
-            </div>
+  <!-- ══════════════════════════════════════════════════════
+       SECCIÓN DE PROYECTOS
+       Para añadir un proyecto: copia un .project-card completo,
+       actualiza los data-* y añade el objeto en PROJECTS_QA de main.js.
+       ══════════════════════════════════════════════════════ -->
+  <section class="projects-section">
 
-            <ul>
-                <li>Unity 2023</li>
-                <li>Windows 11</li>
-                <li>Severity: High</li>
-            </ul>
-        </div>
+    <div class="projects-section-header">
+      <div>
+        <p class="label">PROYECTOS</p>
+        <h2>Reportes & Test Plans</h2>
+      </div>
+    </div>
 
-        <div class="project-card-large">
-            <div>
-                <p class="project-type">TEST PLAN</p>
-                <h2>Movement Testing</h2>
-                <p>
-                    Casos de test para validar movimiento, salto y colisiones.
-                </p>
-            </div>
+    <div class="projects-grid">
 
-            <ul>
-                <li>TestRail</li>
-                <li>Excel</li>
-                <li>Gameplay QA</li>
-            </ul>
+      <!-- ── PROYECTO 1 ─────────────────────────────────── -->
+      <article class="project-card"
+        data-id="qa-001"
+        onclick="openFlyout(PROJECTS_QA['qa-001'])">
+
+        <div class="project-card-thumb">
+          <!-- Cuando tengas imagen: <img src="assets/images/qa-001.png" alt="Bug report screenshot"> -->
+          IMAGEN / SCREENSHOT
         </div>
 
-        <div class="project-card-large">
-            <div>
-                <p class="project-type">ACCESSIBILITY</p>
-                <h2>Accessibility Review</h2>
-                <p>
-                    Checklist de accesibilidad aplicado a un juego indie.
-                </p>
-            </div>
+        <p class="project-card-type">BUG REPORT</p>
+        <h3>Platform Collision Issue</h3>
+        <p>Reporte completo de colisión defectuosa en slopes dentro de un platformer 2D. Incluye pasos de reproducción, evidencias y severidad.</p>
 
-            <ul>
-                <li>UX Testing</li>
-                <li>Color Contrast</li>
-                <li>Subtitles</li>
-            </ul>
+        <div class="project-card-footer">
+          <div class="project-card-tags">
+            <span>Unity 2023</span>
+            <span>Windows 11</span>
+            <span>Severity: High</span>
+          </div>
+          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
         </div>
-    </section>
+      </article>
+
+      <!-- ── PROYECTO 2 ─────────────────────────────────── -->
+      <article class="project-card"
+        data-id="qa-002"
+        onclick="openFlyout(PROJECTS_QA['qa-002'])">
+
+        <div class="project-card-thumb">
+          IMAGEN / SCREENSHOT
+        </div>
+
+        <p class="project-card-type">TEST PLAN</p>
+        <h3>Movement Testing Suite</h3>
+        <p>Casos de test para validar movimiento, salto y colisiones en prototipo 2D. Formato TestRail simulado con tabla de resultados.</p>
+
+        <div class="project-card-footer">
+          <div class="project-card-tags">
+            <span>TestRail</span>
+            <span>Excel</span>
+            <span>Gameplay QA</span>
+          </div>
+          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
+        </div>
+      </article>
+
+      <!-- ── PROYECTO 3 ─────────────────────────────────── -->
+      <article class="project-card"
+        data-id="qa-003"
+        onclick="openFlyout(PROJECTS_QA['qa-003'])">
+
+        <div class="project-card-thumb">
+          IMAGEN / SCREENSHOT
+        </div>
+
+        <p class="project-card-type">ACCESIBILIDAD</p>
+        <h3>Accessibility Review</h3>
+        <p>Checklist de accesibilidad aplicado a un juego indie. Contraste de color, subtítulos, remapping de controles y navegación sin ratón.</p>
+
+        <div class="project-card-footer">
+          <div class="project-card-tags">
+            <span>UX Testing</span>
+            <span>Color Contrast</span>
+            <span>Subtitles</span>
+          </div>
+          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
+        </div>
+      </article>
+
+      <!-- ── PLACEHOLDER — próximo proyecto ────────────── -->
+      <article class="project-card project-card-empty">
+        <div class="project-card-thumb">PRÓXIMAMENTE</div>
+        <p class="project-card-type">EN PROGRESO</p>
+        <h3>Nuevo reporte QA</h3>
+        <p>Se añadirá cuando esté documentado con formato profesional.</p>
+        <div class="project-card-footer">
+          <div class="project-card-tags"><span>WIP</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       FLYOUT — panel lateral de detalle de proyecto
+       No toques esta estructura; el contenido se inyecta via JS.
+       ══════════════════════════════════════════════════════ -->
+  <div class="flyout-overlay" id="flyout-overlay">
+    <aside class="flyout-panel" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
+      <!-- Contenido inyectado por openFlyout() en main.js -->
+    </aside>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       DATOS DE PROYECTOS QA
+       Edita este objeto para actualizar los detalles del flyout
+       sin tocar el HTML de las tarjetas.
+       ══════════════════════════════════════════════════════ -->
+  <script>
+    const PROJECTS_QA = {
+
+      'qa-001': {
+        type: 'BUG REPORT',
+        title: 'Platform Collision Issue',
+        desc: 'El personaje atraviesa el collider en plataformas con pendiente (slope) al aterrizar en el borde. Reporte completo con pasos de reproducción, entorno y evidencias.',
+        tags: ['Unity 2023.2', 'C#', 'Windows 11', 'Build Debug', 'Severity: High'],
+        // extra: puedes poner HTML aquí, por ejemplo una imagen del bug
+        extra: `
+          <div class="flyout-divider"></div>
+          <p class="flyout-meta-label">Formato del reporte</p>
+          <pre style="font-size:0.78rem; color:var(--text-secondary); line-height:1.6; overflow-x:auto; background:var(--bg-base); padding:1rem; border-radius:10px; margin-top:0.5rem;">
+ID: BUG-001
+Severidad: Alta · Prioridad: Media
+Estado: Abierto
+
+Pasos:
+1. Abrir nivel 3 del prototipo
+2. Moverse al borde inferior derecho
+   de la plataforma con pendiente
+3. Saltar y aterrizar en el borde
+
+Esperado: jugador permanece sobre la plataforma
+Obtenido: jugador cae a través del collider
+          </pre>
+        `,
+        links: [
+          // { label: 'Ver reporte completo (PDF)', url: '#', icon: 'pdf' },
+          // { label: 'Vídeo de reproducción', url: '#', icon: 'yt' }
+        ]
+      },
+
+      'qa-002': {
+        type: 'TEST PLAN',
+        title: 'Movement Testing Suite',
+        desc: 'Batería de casos de test para validar movimiento horizontal, salto simple/doble y colisiones en el prototipo v0.2. Formato compatible con TestRail.',
+        tags: ['TestRail', 'Excel', 'Gameplay QA', 'Unity 2023'],
+        links: [
+          // { label: 'Ver test plan (PDF)', url: '#', icon: 'pdf' }
+        ]
+      },
+
+      'qa-003': {
+        type: 'ACCESIBILIDAD',
+        title: 'Accessibility Review',
+        desc: 'Checklist de accesibilidad aplicado a un juego indie. Cubre contraste de color (WCAG AA), subtítulos, remapping de controles y navegación completa sin ratón.',
+        tags: ['UX Testing', 'WCAG AA', 'Color Contrast', 'Subtitles', 'Input Remapping'],
+        links: [
+          // { label: 'Ver checklist (PDF)', url: '#', icon: 'pdf' }
+        ]
+      }
+
+    };
+  </script>
+
+  <script src="main.js"></script>
 
 </body>
 </html>

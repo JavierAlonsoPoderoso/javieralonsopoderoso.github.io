@@ -1,60 +1,240 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Design Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arte 3D — Javier Alonso</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 </head>
-<body class="design-page">
+<body class="art-page">
 
-    <header class="sub-hero design-bg">
-        <nav class="navbar">
-            <a href="index.html" class="logo">JAVIER<span>.DEV</span></a>
-        </nav>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-back">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Inicio
+    </a>
+    <span class="navbar-logo">JAVIER<span>.DEV</span></span>
+  </nav>
 
-        <div class="sub-hero-content">
-            <p>MODE 03</p>
-            <h1>Game Design</h1>
-            <p>
-                Diseño de mecánicas, documentación y estructura UX para videojuegos.
-            </p>
+  <!-- HERO DE SUB-PÁGINA -->
+  <header class="sub-hero art-hero page-offset">
+    <p class="sub-hero-mode art">MODE 03 · ARTE 3D</p>
+    <h1>Arte 3D</h1>
+    <p class="sub-hero-desc">
+      Modelado, render y animación con foco en estilo flat 2D en entorno 3D —
+      el mismo efecto que se usa en películas como <em>Your Name</em>.
+      Renders comparables con slider, GIFs de animación y enlaces a vídeo completo.
+    </p>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════
+       COMPARADOR DE RENDER (antes / después)
+       ══════════════════════════════════════════════════════ -->
+  <section class="projects-section">
+
+    <div class="projects-section-header">
+      <div>
+        <p class="label">COMPONENTE · DESLIZA PARA COMPARAR</p>
+        <h2>Renders</h2>
+      </div>
+    </div>
+
+    <!--
+      Comparador de imagen — arrastra el slider horizontal para revelar el render.
+      Sustituye los src de las imágenes por tus renders reales.
+      Para añadir más comparadores: copia el bloque .img-compare completo.
+    -->
+    <div style="margin-bottom: 3rem;">
+      <p class="label" style="margin-bottom: 0.75rem;">Render — sin/con iluminación</p>
+
+      <div class="img-compare">
+        <!--
+          ANTES (imagen de fondo, sin render):
+          <img class="img-compare-before" src="assets/images/render-01-before.jpg" alt="Sin render">
+        -->
+        <div class="img-compare-before" style="background: linear-gradient(135deg, #1a2233, #0b1220); display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:0.8rem; letter-spacing:0.05em;">
+          IMAGEN ANTES (sin render)
         </div>
-    </header>
 
-    <section class="design-layout">
-
-        <div class="design-card-large">
-            <p class="project-type">GDD</p>
-            <h2>Exploration System</h2>
-            <p>
-                Sistema de progresión basado en exploración y habilidades desbloqueables.
-            </p>
+        <!--
+          DESPUÉS (imagen encima, con render):
+          <img class="img-compare-after" src="assets/images/render-01-after.jpg" alt="Con render">
+        -->
+        <div class="img-compare-after" style="background: linear-gradient(135deg, #a07dd6, #3a2060); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:0.8rem; letter-spacing:0.05em; clip-path:inset(0 50% 0 0);">
+          IMAGEN DESPUÉS (con render)
         </div>
 
-        <div class="design-grid">
-            <div class="mini-card">
-                <h3>Wireframes</h3>
-                <p>Layouts y flujos de navegación.</p>
-            </div>
+        <div class="img-compare-slider"></div>
+      </div>
 
-            <div class="mini-card">
-                <h3>Level Design</h3>
-                <p>Mapas con pacing y checkpoints.</p>
-            </div>
+      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.75rem; text-align:center;">
+        ← Arrastra el slider para comparar
+      </p>
+    </div>
 
-            <div class="mini-card">
-                <h3>Balancing</h3>
-                <p>Curvas de dificultad y economía.</p>
-            </div>
+  </section>
 
-            <div class="mini-card">
-                <h3>UX</h3>
-                <p>Navegación clara y readable HUD.</p>
-            </div>
+  <!-- ══════════════════════════════════════════════════════
+       PROYECTOS DE ARTE
+       Para GIFs cortos (ciclo de caminata, etc.): usa <img class="project-gif" src="...gif">
+       Para animaciones largas o reel: usa un enlace a YouTube en el flyout.
+       ══════════════════════════════════════════════════════ -->
+  <section class="projects-section" style="padding-top: 0;">
+
+    <div class="projects-section-header">
+      <div>
+        <p class="label">PROYECTOS</p>
+        <h2>Modelado & Animación</h2>
+      </div>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- ── PROYECTO 1 — render estático ──────────────── -->
+      <article class="project-card"
+        data-id="art-001"
+        onclick="openFlyout(PROJECTS_ART['art-001'])">
+
+        <div class="project-card-thumb">
+          <!--
+            Para render estático:
+            <img src="assets/images/art-001.jpg" alt="Render personaje">
+          -->
+          RENDER · IMAGEN
         </div>
 
-    </section>
+        <p class="project-card-type">MODELADO · RENDER</p>
+        <h3>Personaje — estilo flat 2D</h3>
+        <p>Personaje 3D con shading cel-shaded para conseguir estética de anime flat. Modelado, rigging y render.</p>
+
+        <div class="project-card-footer">
+          <div class="project-card-tags">
+            <span>Blender</span>
+            <span>Cel-shading</span>
+            <span>Rigging</span>
+          </div>
+          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
+        </div>
+      </article>
+
+      <!-- ── PROYECTO 2 — animación con GIF ────────────── -->
+      <article class="project-card"
+        data-id="art-002"
+        onclick="openFlyout(PROJECTS_ART['art-002'])">
+
+        <div class="project-card-thumb">
+          <!--
+            Para GIF de animación corta (walk cycle, etc.):
+            <img class="project-gif" src="assets/images/walkcycle.gif" alt="Walk cycle">
+          -->
+          GIF · ANIMACIÓN
+        </div>
+
+        <p class="project-card-type">ANIMACIÓN</p>
+        <h3>Walk Cycle</h3>
+        <p>Ciclo de caminata completo en 24fps. Base para animaciones de personaje en proyectos de juego.</p>
+
+        <div class="project-card-footer">
+          <div class="project-card-tags">
+            <span>Blender</span>
+            <span>24fps</span>
+            <span>Loop</span>
+          </div>
+          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
+        </div>
+      </article>
+
+      <!-- ── PROYECTO 3 — animación larga con enlace YT ── -->
+      <article class="project-card"
+        data-id="art-003"
+        onclick="openFlyout(PROJECTS_ART['art-003'])">
+
+        <div class="project-card-thumb">
+          <!--
+            Para preview de vídeo: puedes usar un thumbnail estático
+            <img src="assets/images/art-003-thumb.jpg" alt="Animación corta">
+          -->
+          THUMBNAIL · VÍDEO
+        </div>
+
+        <p class="project-card-type">ANIMACIÓN · CORTOMETRAJE</p>
+        <h3>Escena de prueba</h3>
+        <p>Escena corta completa con iluminación, cámara animada y postprocesado. Enlace a canal de YouTube.</p>
+
+        <div class="project-card-footer">
+          <div class="project-card-tags">
+            <span>Blender</span>
+            <span>Iluminación</span>
+            <span>Compositing</span>
+          </div>
+          <span style="font-size:0.8rem; color:var(--text-muted)">Ver en YT →</span>
+        </div>
+      </article>
+
+      <!-- ── PLACEHOLDER ────────────────────────────────── -->
+      <article class="project-card project-card-empty">
+        <div class="project-card-thumb">PRÓXIMAMENTE</div>
+        <p class="project-card-type">EN PROGRESO</p>
+        <h3>Nuevo render / animación</h3>
+        <p>Se añadirá cuando esté terminado.</p>
+        <div class="project-card-footer">
+          <div class="project-card-tags"><span>WIP</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- FLYOUT -->
+  <div class="flyout-overlay" id="flyout-overlay">
+    <aside class="flyout-panel" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
+    </aside>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       DATOS DE PROYECTOS ARTE 3D
+       ══════════════════════════════════════════════════════ -->
+  <script>
+    const PROJECTS_ART = {
+
+      'art-001': {
+        type: 'MODELADO · RENDER',
+        title: 'Personaje — estilo flat 2D',
+        desc: 'Personaje 3D modelado y rigged en Blender. El reto principal fue conseguir la estética de anime flat (similar a Your Name) usando cel-shading y contornos procedurales, sin que pareciera un render 3D convencional.',
+        tags: ['Blender', 'Cel-shading', 'Freestyle', 'Rigging', 'Render Cycles'],
+        links: [
+          // { label: 'Ver en ArtStation', url: '#', icon: 'external' }
+        ]
+      },
+
+      'art-002': {
+        type: 'ANIMACIÓN',
+        title: 'Walk Cycle',
+        desc: 'Ciclo de caminata completo de 12 frames en 24fps (principio de pose-to-pose). Exportado como GIF y como secuencia PNG para uso en proyectos de juego.',
+        tags: ['Blender', '24fps', 'Loop', 'Pose-to-pose', 'NLA Editor'],
+        links: [
+          // { label: 'Ver vídeo completo', url: '#', icon: 'yt' }
+        ]
+      },
+
+      'art-003': {
+        type: 'ANIMACIÓN · CORTOMETRAJE',
+        title: 'Escena de prueba',
+        desc: 'Escena corta completa: personaje animado, iluminación tres puntos, cámara con animación de path y postprocesado en compositor de Blender. Duración aproximada: 30 segundos.',
+        tags: ['Blender', 'Iluminación 3 puntos', 'Camera path', 'Compositor', 'EEVEE'],
+        links: [
+          // { label: 'Ver en YouTube', url: '#', icon: 'yt' }
+        ]
+      }
+
+    };
+  </script>
+
+  <script src="main.js"></script>
 
 </body>
 </html>
