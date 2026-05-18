@@ -87,6 +87,113 @@
     </div>
   </header>
 
+  <!--
+  ══════════════════════════════════════════════════════════
+  CARRUSEL DE PROYECTOS
+  Pega este bloque en index.html, justo ANTES de la sección
+  id="about" (después del cierre </header> del hero).
+ 
+  Para añadir un slide: copia un .carousel-slide completo
+  y actualiza data-section, el tipo, título y subtítulo.
+  data-section: "qa" | "dev" | "art"
+ 
+  Para añadir imagen real:
+    Sustituye el div .carousel-slide-thumb por:
+    <div class="carousel-slide-thumb">
+      <img src="assets/images/tu-imagen.jpg" alt="Descripción">
+    </div>
+  ══════════════════════════════════════════════════════════
+-->
+ 
+<section class="carousel-section">
+ 
+  <div class="carousel-section-header">
+    <div>
+      <p class="label">PROYECTOS</p>
+      <h2>Últimos trabajos</h2>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="carousel-prev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="carousel-btn" id="carousel-next" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+ 
+  <div class="carousel-track-wrapper">
+    <div class="carousel-track" id="carousel-track">
+ 
+      <!-- ── QA: Bug Report ─────────────────────────────── -->
+      <a href="qa.html" class="carousel-slide" data-section="qa">
+        <div class="carousel-slide-thumb">
+          <!-- <img src="assets/images/qa-001.png" alt="Platform Collision Bug"> -->
+          CAPTURA / GIF
+        </div>
+        <div class="carousel-slide-info">
+          <span class="carousel-slide-type">QA · Bug Report</span>
+          <span class="carousel-slide-title">Platform Collision Issue</span>
+          <span class="carousel-slide-sub">Unity 2023 · Severity: High</span>
+        </div>
+      </a>
+ 
+      <!-- ── QA: Test Plan ──────────────────────────────── -->
+      <a href="qa.html" class="carousel-slide" data-section="qa">
+        <div class="carousel-slide-thumb">
+          CAPTURA / GIF
+        </div>
+        <div class="carousel-slide-info">
+          <span class="carousel-slide-type">QA · Test Plan</span>
+          <span class="carousel-slide-title">Movement Testing Suite</span>
+          <span class="carousel-slide-sub">TestRail · Gameplay QA</span>
+        </div>
+      </a>
+ 
+      <!-- ── DEV: Platformer ────────────────────────────── -->
+      <a href="dev.html" class="carousel-slide" data-section="dev">
+        <div class="carousel-slide-thumb">
+          CAPTURA / GIF
+        </div>
+        <div class="carousel-slide-info">
+          <span class="carousel-slide-type">Dev · Unity</span>
+          <span class="carousel-slide-title">2D Platformer Prototype</span>
+          <span class="carousel-slide-sub">C# · Physics2D · Raycast</span>
+        </div>
+      </a>
+ 
+      <!-- ── ART: Personaje ─────────────────────────────── -->
+      <a href="art3d.html" class="carousel-slide" data-section="art">
+        <div class="carousel-slide-thumb">
+          RENDER · IMAGEN
+        </div>
+        <div class="carousel-slide-info">
+          <span class="carousel-slide-type">Arte 3D · Modelado</span>
+          <span class="carousel-slide-title">Personaje estilo flat 2D</span>
+          <span class="carousel-slide-sub">Blender · Cel-shading</span>
+        </div>
+      </a>
+ 
+      <!-- ── ART: Walk Cycle ────────────────────────────── -->
+      <a href="art3d.html" class="carousel-slide" data-section="art">
+        <div class="carousel-slide-thumb">
+          GIF · ANIMACIÓN
+        </div>
+        <div class="carousel-slide-info">
+          <span class="carousel-slide-type">Arte 3D · Animación</span>
+          <span class="carousel-slide-title">Walk Cycle</span>
+          <span class="carousel-slide-sub">Blender · 24fps · Loop</span>
+        </div>
+      </a>
+ 
+    </div>
+  </div>
+ 
+  <!-- Indicadores de puntos -->
+  <div class="carousel-dots" id="carousel-dots"></div>
+ 
+</section>
+
   <!-- ══════════════════════════════════════════════════════
        SOBRE MÍ
        ══════════════════════════════════════════════════════ -->
@@ -192,6 +299,58 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!--
+  ══════════════════════════════════════════════════════════
+  JS DEL CARRUSEL
+  Pega este bloque justo ANTES del </body> de index.html,
+  después del <script src="js/main.js"></script> existente.
+  ══════════════════════════════════════════════════════════
+-->
+<script>
+(function() {
+  const track   = document.getElementById('carousel-track');
+  const btnPrev = document.getElementById('carousel-prev');
+  const btnNext = document.getElementById('carousel-next');
+  const dotsEl  = document.getElementById('carousel-dots');
+ 
+  if (!track) return;
+ 
+  const slides     = Array.from(track.querySelectorAll('.carousel-slide'));
+  const slideWidth = () => slides[0].offsetWidth + 20; // 20 = gap
+ 
+  // ── Generar puntos ──────────────────────────────────────
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Ir al slide ${i + 1}`);
+    dot.addEventListener('click', () => scrollToSlide(i));
+    dotsEl.appendChild(dot);
+  });
+ 
+  function updateDots() {
+    const dots    = dotsEl.querySelectorAll('.carousel-dot');
+    const index   = Math.round(track.scrollLeft / slideWidth());
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  }
+ 
+  function scrollToSlide(index) {
+    track.scrollTo({ left: index * slideWidth(), behavior: 'smooth' });
+  }
+ 
+  // ── Flechas ─────────────────────────────────────────────
+  btnPrev.addEventListener('click', () => {
+    track.scrollBy({ left: -slideWidth(), behavior: 'smooth' });
+  });
+ 
+  btnNext.addEventListener('click', () => {
+    track.scrollBy({ left: slideWidth(), behavior: 'smooth' });
+  });
+ 
+  // ── Actualizar dots al hacer scroll ─────────────────────
+  track.addEventListener('scroll', updateDots, { passive: true });
+})();
+</script>
 
 </body>
 </html>
