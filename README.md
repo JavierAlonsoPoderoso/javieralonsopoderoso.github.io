@@ -35,5 +35,5 @@ https://javieralonsopoderoso.github.io/
 
 ## Contact
 - Email: alonsopoderosojavier@gmail.com
-- LinkedIn: https://www.linkedin.com/in/javier-alonso-poderoso-b36ab8336/
+- LinkedIn: https://www.linkedin.com/in/javier-alonso-poderoso/
 - GitHub: https://github.com/JavierAlonsoPoderoso
