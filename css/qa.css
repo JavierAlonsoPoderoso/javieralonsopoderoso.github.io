@@ -1,0 +1,29 @@
+.qa-bg {
+    min-height: 60vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+    #0f1720;
+}
+
+.projects-section {
+    padding: 5rem 5%;
+}
+
+.project-card-large {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: center;
+
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+}
+
+.project-type {
+    color: #5ea2ff;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}

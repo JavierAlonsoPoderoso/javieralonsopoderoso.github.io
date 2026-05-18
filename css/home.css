@@ -1,0 +1,54 @@
+.hero {
+    min-height: 100vh;
+    background:
+    radial-gradient(circle at top, rgba(94, 162, 255, 0.2), transparent 40%),
+    #0d1117;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 5rem 5%;
+}
+
+.tag {
+    color: #5ea2ff;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+
+.hero-content h2 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.description {
+    max-width: 700px;
+    color: #b8c0cc;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.mode-grid {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.mode-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 2rem;
+    border-radius: 24px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.mode-card:hover {
+    transform: translateY(-8px);
+    border-color: #5ea2ff;
+}
