@@ -1,0 +1,163 @@
+/* ============================================================
+   art3d.css — Solo para art3d.html (se carga DESPUÉS de main.css)
+   Usa las variables de main.css: --art-accent, --bg-surface...
+   ============================================================ */
+
+.art-wrap { padding: 3rem 6% 6rem; }
+
+/* ── 1. PESTAÑAS (selector de proyecto) ───────────────────── */
+.art-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.art-tab {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  text-align: left;
+  font: inherit;
+  color: var(--text-secondary);
+  cursor: pointer;
+
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: border-color var(--transition), background var(--transition), transform var(--transition);
+}
+
+.art-tab:hover { transform: translateY(-3px); border-color: var(--border-hover); }
+
+/* Pestaña activa: borde y brillo violeta */
+.art-tab.active {
+  border-color: var(--art-accent);
+  background: var(--bg-overlay);
+  box-shadow: 0 0 0 3px rgba(160, 125, 214, 0.15);
+  color: var(--text-primary);
+}
+
+.art-tab img {
+  width: 64px; height: 64px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.art-tab strong { display: block; font-family: var(--font-display); font-size: 1.05rem; }
+.art-tab small  { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--art-accent); }
+
+.art-tab-empty { border-style: dashed; opacity: 0.45; cursor: default; pointer-events: none; }
+
+/* ── 2. PANELES ───────────────────────────────────────────── */
+.art-panel { display: none; }
+.art-panel.active { display: block; animation: artFade 0.4s ease; }
+
+@keyframes artFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.art-head { max-width: 760px; margin-bottom: 2rem; }
+.art-head h2 { margin: 0.4rem 0 1rem; }
+.art-head .flyout-tags { margin: 1.25rem 0 0; }
+
+.art-status { margin-top: 1.25rem; font-size: 0.9rem; color: var(--text-secondary); line-height: 2; }
+
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.art-card {
+  padding: 1.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+}
+.art-card-wide { grid-column: 1 / -1; }
+
+/* ── 3. "SLOT" DE MEDIA: placeholder detrás, contenido encima ─
+   Si el archivo existe, tapa el texto. Si falta, se ve el aviso. */
+.slot {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-overlay);
+  border: 1px dashed var(--border-hover);
+}
+
+.slot-ph, .ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.slot-ph { position: absolute; inset: 0; }
+
+.slot-media { position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; }
+.slot-media.missing { visibility: hidden; }
+
+model-viewer { --poster-color: transparent; }
+
+/* ── 4. COMPARADOR (extiende .img-compare de main.css) ────── */
+.art-card .img-compare { border-radius: 12px; }
+
+.ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+
+/* El layer "after" se ve a la IZQUIERDA, el "before" a la DERECHA */
+.ph-before { background: linear-gradient(135deg, #1a2233, #0b1220); justify-content: flex-end; padding-right: 8%; }
+.ph-after  { background: linear-gradient(135deg, #3a2060, #a07dd6); justify-content: flex-start; padding-left: 8%; }
+.ph-text   { max-width: 30%; }
+
+.cmp-tag {
+  position: absolute; top: 0.75rem; z-index: 5;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #fff; background: rgba(0, 0, 0, 0.55);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+.cmp-tag-l { left: 0.75rem; }
+.cmp-tag-r { right: 0.75rem; }
+
+/* ── 5. SELECTOR DE ANIMACIONES + PALETA ──────────────────── */
+.anim-picker { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1rem; }
+
+.anim-btn {
+  padding: 0.5rem 1.1rem;
+  font: inherit; font-size: 0.85rem; font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-overlay);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+.anim-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+.anim-btn.active { border-color: var(--art-accent); color: var(--text-primary); background: var(--accent-dim); }
+.anim-btn small { margin-left: 0.4rem; font-size: 0.68rem; color: var(--text-muted); }
+
+.swatches { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0.75rem 0; }
+.swatch {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--c);            /* el color llega por la variable --c */
+  border: 2px solid var(--border-hover);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--c) 45%, transparent);
+}
+.art-note { font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+
+@media (max-width: 800px) {
+  .art-grid { grid-template-columns: 1fr; }
+}

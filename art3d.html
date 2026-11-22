@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arte 3D — Javier Alonso</title>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/art3d.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <!-- Visor 3D de Google (web component). Carga archivos .glb / .gltf -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
 </head>
 <body class="art-page">
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <a href="index.html" class="navbar-back">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
@@ -20,125 +22,178 @@
     <span class="navbar-logo">JAVIER<span>.DEV</span></span>
   </nav>
 
-  <!-- HERO DE SUB-PÁGINA -->
   <header class="sub-hero art-hero page-offset">
     <p class="sub-hero-mode art">MODE 03 · ARTE 3D</p>
     <h1>Arte 3D</h1>
     <p class="sub-hero-desc">
-      Modelado, render y animación con foco en estilo flat 2D en entorno 3D —
+      Modelado, rig y animación con foco en estilo flat 2D en entorno 3D —
       el mismo efecto que se usa en películas como <em>Your Name</em>.
-      Renders comparables con slider, GIFs de animación y enlaces a vídeo completo.
+      Cada proyecto incluye comparador de texturas, visor 3D interactivo y animaciones.
     </p>
   </header>
 
-  <!-- ══════════════════════════════════════════════════════
-       COMPARADOR DE RENDER (antes / después)
-       Sigue con imágenes de relleno: sustituye los dos <div>
-       por <img> reales cuando tengas un render tuyo.
-       ══════════════════════════════════════════════════════ -->
-  <section class="projects-section">
+  <main class="art-wrap">
 
-    <div class="projects-section-header">
-      <div>
-        <p class="label">COMPONENTE · DESLIZA PARA COMPARAR</p>
-        <h2>Renders</h2>
+    <!-- ══════════════════════════════════════════════════
+         PESTAÑAS — una por proyecto.
+         data-target = id del <section class="art-panel"> de abajo
+         ══════════════════════════════════════════════════ -->
+    <nav class="art-tabs" role="tablist" aria-label="Proyectos de arte 3D">
+      <button class="art-tab active" role="tab" id="tab-arana" data-target="arana" aria-selected="true">
+        <img src="assets/images/art-001.png" alt="">
+        <span><strong>Araña steampunk</strong><small>En progreso</small></span>
+      </button>
+      <button class="art-tab" role="tab" id="tab-gato" data-target="gato" aria-selected="false">
+        <img src="assets/images/art-002.png" alt="">
+        <span><strong>Gato ciberpunk</strong><small>Animado</small></span>
+      </button>
+      <div class="art-tab art-tab-empty"><span><strong>＋ Próximamente</strong><small>Siguiente proyecto</small></span></div>
+    </nav>
+
+    <!-- ══════════════════════════════════════════════════
+         PROYECTO 1 — ARAÑA STEAMPUNK
+         ══════════════════════════════════════════════════ -->
+    <section class="art-panel active" id="arana" role="tabpanel" aria-labelledby="tab-arana">
+
+      <div class="art-head">
+        <p class="label">MODELADO · EN PROGRESO</p>
+        <h2>Araña steampunk</h2>
+        <p>Robot araña de estética steampunk: cuerpo en cúpula oscura, brazos de cobre, patas azules y una antena luminosa. El ojo cambiará de color según la emoción del personaje.</p>
+        <div class="flyout-tags">
+          <span class="tag-chip">Blender</span><span class="tag-chip">Steampunk</span><span class="tag-chip">Modelado</span>
+        </div>
+        <ul class="art-status">
+          <li>✅ Modelado del cuerpo, patas y brazos</li>
+          <li>✅ Paleta de colores del ojo</li>
+          <li>⬜ Ojo que cambia de color según la emoción</li>
+          <li>⬜ Animaciones</li>
+        </ul>
       </div>
-    </div>
 
-    <div style="margin-bottom: 3rem;">
-      <p class="label" style="margin-bottom: 0.75rem;">Render — sin/con iluminación</p>
+      <div class="art-grid">
 
-      <div class="img-compare">
-        <!-- ANTES. Con imagen real: <img class="img-compare-before" src="assets/images/render-01-before.jpg" alt="Sin render"> -->
-        <div class="img-compare-before" style="background: linear-gradient(135deg, #1a2233, #0b1220); display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:0.8rem; letter-spacing:0.05em;">
-          IMAGEN ANTES (sin render)
+        <!-- Comparador con/sin textura.
+             after = lado IZQUIERDO (con textura) · before = lado DERECHO (sin textura)
+             Cambia los src por tus renders. Si el archivo no existe se ve el aviso. -->
+        <article class="art-card">
+          <p class="flyout-meta-label">Textura · desliza para comparar</p>
+          <div class="img-compare">
+            <div class="img-compare-before ph ph-before">
+              <span class="ph-text">Sin textura · arana-sin-textura.jpg</span>
+              <img src="assets/images/arana-sin-textura.jpg" alt="Araña sin textura" draggable="false" onerror="this.remove()">
+            </div>
+            <div class="img-compare-after ph ph-after">
+              <span class="ph-text">Con textura</span>
+              <img src="assets/images/art-001.png" alt="Araña con textura" draggable="false" onerror="this.remove()">
+            </div>
+            <span class="cmp-tag cmp-tag-l">Con textura</span>
+            <span class="cmp-tag cmp-tag-r">Sin textura</span>
+            <div class="img-compare-slider"></div>
+          </div>
+        </article>
+
+        <!-- Visor 3D: arrastra para girar, rueda para zoom -->
+        <article class="art-card">
+          <p class="flyout-meta-label">Modelo 3D · arrastra para girar</p>
+          <div class="slot">
+            <span class="slot-ph">Modelo 3D · assets/models/arana.glb</span>
+            <model-viewer class="slot-media" src="assets/models/arana.glb"
+              alt="Modelo 3D de la araña steampunk"
+              camera-controls auto-rotate auto-rotate-delay="2000"
+              shadow-intensity="1" loading="lazy"></model-viewer>
+          </div>
+        </article>
+
+        <!-- Paleta del ojo (sin emociones asignadas todavía) -->
+        <article class="art-card art-card-wide">
+          <p class="flyout-meta-label">Paleta del ojo</p>
+          <div class="swatches">
+            <span class="swatch" style="--c:#6cc750"></span>
+            <span class="swatch" style="--c:#dc3a24"></span>
+            <span class="swatch" style="--c:#88c4c8"></span>
+            <span class="swatch" style="--c:#c8c46c"></span>
+            <span class="swatch" style="--c:#a468d4"></span>
+            <span class="swatch" style="--c:#42289a"></span>
+            <span class="swatch" style="--c:#d87430"></span>
+            <span class="swatch" style="--c:#cccccc"></span>
+            <span class="swatch" style="--c:#00288c"></span>
+          </div>
+          <p class="art-note">Emociones por asignar · animaciones próximamente.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         PROYECTO 2 — GATO CIBERPUNK
+         ══════════════════════════════════════════════════ -->
+    <section class="art-panel" id="gato" role="tabpanel" aria-labelledby="tab-gato">
+
+      <div class="art-head">
+        <p class="label">MODELADO · RIG · ANIMACIÓN</p>
+        <h2>Gato ciberpunk</h2>
+        <p>Gato robótico de cuerpo negro con bandas violeta luminosas, cola segmentada y sombrero. Modelado, rigged y animado en Blender con tres ciclos de movimiento.</p>
+        <div class="flyout-tags">
+          <span class="tag-chip">Blender</span><span class="tag-chip">Rigging</span><span class="tag-chip">Animación</span><span class="tag-chip">Ciberpunk</span>
         </div>
-
-        <!-- DESPUÉS. Con imagen real: <img class="img-compare-after" src="assets/images/render-01-after.jpg" alt="Con render"> -->
-        <div class="img-compare-after" style="background: linear-gradient(135deg, #a07dd6, #3a2060); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:0.8rem; letter-spacing:0.05em; clip-path:inset(0 50% 0 0);">
-          IMAGEN DESPUÉS (con render)
-        </div>
-
-        <div class="img-compare-slider"></div>
+        <ul class="art-status">
+          <li>✅ Modelado y rig</li>
+          <li>✅ Idle · ✅ Caminar</li>
+          <li>🛠️ Correr — publicable, con retoques pendientes</li>
+        </ul>
       </div>
 
-      <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.75rem; text-align:center;">
-        ← Arrastra el slider para comparar
-      </p>
-    </div>
+      <div class="art-grid">
 
-  </section>
+        <article class="art-card">
+          <p class="flyout-meta-label">Textura · desliza para comparar</p>
+          <div class="img-compare">
+            <div class="img-compare-before ph ph-before">
+              <span class="ph-text">Sin textura · gato-sin-textura.jpg</span>
+              <img src="assets/images/gato-sin-textura.jpg" alt="Gato sin textura" draggable="false" onerror="this.remove()">
+            </div>
+            <div class="img-compare-after ph ph-after">
+              <span class="ph-text">Con textura</span>
+              <img src="assets/images/art-002.png" alt="Gato con textura" draggable="false" onerror="this.remove()">
+            </div>
+            <span class="cmp-tag cmp-tag-l">Con textura</span>
+            <span class="cmp-tag cmp-tag-r">Sin textura</span>
+            <div class="img-compare-slider"></div>
+          </div>
+        </article>
 
-  <!-- ══════════════════════════════════════════════════════
-       PROYECTOS DE ARTE
-       Para añadir un proyecto:
-       1. Copia la PLANTILLA de abajo (sin las marcas de comentario)
-       2. Cambia data-id y el id en onclick (ej: art-001)
-       3. Añade el objeto con ese mismo id en PROJECTS_ART (final del archivo)
-       GIF corto: <img class="project-gif" src="...gif"> dentro de .project-card-thumb
-       Vídeo largo: enlace a YouTube en "links" del flyout
-       ══════════════════════════════════════════════════════ -->
-  <section class="projects-section" style="padding-top: 0;">
+        <article class="art-card">
+          <p class="flyout-meta-label">Modelo 3D · arrastra para girar</p>
+          <div class="slot">
+            <span class="slot-ph">Modelo 3D · assets/models/gato.glb</span>
+            <model-viewer class="slot-media" src="assets/models/gato.glb"
+              alt="Modelo 3D del gato ciberpunk"
+              camera-controls auto-rotate auto-rotate-delay="2000"
+              shadow-intensity="1" loading="lazy"></model-viewer>
+          </div>
+        </article>
 
-    <div class="projects-section-header">
-      <div>
-        <p class="label">PROYECTOS</p>
-        <h2>Modelado & Animación</h2>
+        <!-- Vídeos: un reproductor, tres botones (ver js/art3d.js) -->
+        <article class="art-card art-card-wide" data-anim>
+          <p class="flyout-meta-label">Animaciones</p>
+          <div class="anim-picker" role="group" aria-label="Elegir animación">
+            <button class="anim-btn active" data-src="assets/videos/gato-idle.mp4">Idle</button>
+            <button class="anim-btn" data-src="assets/videos/gato-caminar.mp4">Caminar</button>
+            <button class="anim-btn" data-src="assets/videos/gato-correr.mp4">Correr<small>retoques pendientes</small></button>
+          </div>
+          <div class="slot">
+            <span class="slot-ph"></span>
+            <video class="slot-media" controls loop muted playsinline preload="metadata"></video>
+          </div>
+        </article>
+
       </div>
-    </div>
+    </section>
 
-    <div class="projects-grid">
-
-      <!-- PLANTILLA (copia y pega dentro de .projects-grid)
-      <article class="project-card" data-id="art-001"
-        onclick="openFlyout(PROJECTS_ART['art-001'])">
-        <div class="project-card-thumb">RENDER · IMAGEN</div>
-        <p class="project-card-type">MODELADO · RENDER</p>
-        <h3>Título del proyecto</h3>
-        <p>Descripción corta.</p>
-        <div class="project-card-footer">
-          <div class="project-card-tags"><span>Blender</span><span>Tag 2</span></div>
-          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
-        </div>
-      </article>
-      -->
-
-      <!-- PLACEHOLDER — se queda hasta que añadas el primer proyecto real -->
-      <article class="project-card project-card-empty">
-        <div class="project-card-thumb">PRÓXIMAMENTE</div>
-        <p class="project-card-type">EN PROGRESO</p>
-        <h3>Nuevo render / animación</h3>
-        <p>Se añadirá cuando esté terminado.</p>
-        <div class="project-card-footer">
-          <div class="project-card-tags"><span>WIP</span></div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- FLYOUT — panel lateral (el contenido lo inyecta openFlyout() en main.js) -->
-  <div class="flyout-overlay" id="flyout-overlay">
-    <aside class="flyout-panel" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
-    </aside>
-  </div>
-
-  <!-- DATOS DE PROYECTOS ARTE 3D — un objeto por proyecto, la clave = data-id -->
-  <script>
-    const PROJECTS_ART = {
-
-      // 'art-001': {
-      //   type: 'MODELADO · RENDER',
-      //   title: 'Título',
-      //   desc: 'Descripción larga.',
-      //   tags: ['Blender', 'Cel-shading'],
-      //   links: [ { label: 'Ver en YouTube', url: '#', icon: 'yt' } ]
-      // }
-
-    };
-  </script>
+  </main>
 
   <script src="js/main.js"></script>
+  <script src="js/art3d.js"></script>
 
 </body>
 </html>
