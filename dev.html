@@ -32,8 +32,10 @@
 
   <!-- ══════════════════════════════════════════════════════
        SECCIÓN DE PROYECTOS
-       Para añadir un proyecto: copia un .project-card completo,
-       actualiza los data-id y añade el objeto en PROJECTS_DEV de abajo.
+       Para añadir un proyecto:
+       1. Copia la PLANTILLA de abajo (sin las marcas de comentario)
+       2. Cambia data-id y el id en onclick (ej: dev-001)
+       3. Añade el objeto con ese mismo id en PROJECTS_DEV (final del archivo)
        ══════════════════════════════════════════════════════ -->
   <section class="projects-section">
 
@@ -46,55 +48,21 @@
 
     <div class="projects-grid">
 
-      <!-- ── PROYECTO 1 ─────────────────────────────────── -->
-      <article class="project-card"
-        data-id="dev-001"
+      <!-- PLANTILLA (copia y pega dentro de .projects-grid)
+      <article class="project-card" data-id="dev-001"
         onclick="openFlyout(PROJECTS_DEV['dev-001'])">
-
-        <div class="project-card-thumb">
-          <!-- Cuando tengas imagen: <img src="assets/images/dev-001.png" alt="Platformer prototype"> -->
-          <!-- Para GIF de gameplay: <img class="project-gif" src="assets/images/dev-001.gif" alt="Gameplay"> -->
-          CAPTURA / GIF
-        </div>
-
-        <p class="project-card-type">UNITY · C#</p>
-        <h3>2D Platformer Prototype</h3>
-        <p>Sistema de movimiento fluido con raycasts y control avanzado de colisiones. Input buffering para salto más responsivo.</p>
-
+        <div class="project-card-thumb">CAPTURA / GIF</div>
+        <p class="project-card-type">JAVA · MINECRAFT MOD</p>
+        <h3>Título del proyecto</h3>
+        <p>Descripción corta.</p>
         <div class="project-card-footer">
-          <div class="project-card-tags">
-            <span>Unity</span>
-            <span>C#</span>
-            <span>Git</span>
-          </div>
+          <div class="project-card-tags"><span>Tag 1</span><span>Tag 2</span></div>
           <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
         </div>
       </article>
+      -->
 
-      <!-- ── PROYECTO 2 ─────────────────────────────────── -->
-      <article class="project-card"
-        data-id="dev-002"
-        onclick="openFlyout(PROJECTS_DEV['dev-002'])">
-
-        <div class="project-card-thumb">
-          CAPTURA / GIF
-        </div>
-
-        <p class="project-card-type">WEB GAME · JS</p>
-        <h3>JavaScript Arcade</h3>
-        <p>Mini-juego arcade desarrollado con HTML, CSS y JavaScript puro. Sin frameworks, sin dependencias.</p>
-
-        <div class="project-card-footer">
-          <div class="project-card-tags">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-          </div>
-          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
-        </div>
-      </article>
-
-      <!-- ── PLACEHOLDER ────────────────────────────────── -->
+      <!-- PLACEHOLDER — se queda hasta que añadas el primer proyecto real -->
       <article class="project-card project-card-empty">
         <div class="project-card-thumb">PRÓXIMAMENTE</div>
         <p class="project-card-type">EN PROGRESO</p>
@@ -108,48 +76,23 @@
     </div>
   </section>
 
-  <!-- FLYOUT -->
+  <!-- FLYOUT — panel lateral (el contenido lo inyecta openFlyout() en main.js) -->
   <div class="flyout-overlay" id="flyout-overlay">
     <aside class="flyout-panel" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
     </aside>
   </div>
 
-  <!-- ══════════════════════════════════════════════════════
-       DATOS DE PROYECTOS DEV
-       ══════════════════════════════════════════════════════ -->
+  <!-- DATOS DE PROYECTOS DEV — un objeto por proyecto, la clave = data-id -->
   <script>
     const PROJECTS_DEV = {
 
-      'dev-001': {
-        type: 'UNITY · C#',
-        title: '2D Platformer Prototype',
-        desc: 'Prototipo de platformer 2D con sistema de movimiento basado en raycasts. El problema principal era que el personaje resbalaba en bordes al cambiar de dirección; lo resolví con input buffering de 0.1s para el salto y detección de suelo por múltiples raycasts.',
-        tags: ['Unity 2023.2', 'C#', 'Git', 'Physics2D', 'Raycast'],
-        extra: `
-          <div class="flyout-divider"></div>
-          <p class="flyout-meta-label">Problema → Solución</p>
-          <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.7; margin-top:0.5rem;">
-            <strong style="color:var(--text-primary);">Problema:</strong> El personaje rebotaba en bordes de plataforma al cambiar de dirección.<br>
-            <strong style="color:var(--text-primary);">Solución:</strong> Detección por raycast múltiple + input buffering de 0.1s.<br>
-            <strong style="color:var(--text-primary);">Resultado:</strong> 0 glitches en 50+ horas de test interno.
-          </p>
-        `,
-        links: [
-          // { label: 'Ver en GitHub', url: '#', icon: 'github' },
-          // { label: 'Jugar en itch.io', url: '#', icon: 'itch' }
-        ]
-      },
-
-      'dev-002': {
-        type: 'WEB GAME · JS',
-        title: 'JavaScript Arcade',
-        desc: 'Mini-juego arcade desarrollado con HTML5 Canvas, CSS y JavaScript puro. Sin frameworks ni dependencias externas. Demuestra dominio del game loop, detección de colisiones y gestión de estado.',
-        tags: ['HTML5', 'CSS3', 'JavaScript', 'Canvas API'],
-        links: [
-          // { label: 'Ver en GitHub', url: '#', icon: 'github' },
-          // { label: 'Jugar online', url: '#', icon: 'external' }
-        ]
-      }
+      // 'dev-001': {
+      //   type: 'JAVA · MINECRAFT MOD',
+      //   title: 'Título',
+      //   desc: 'Descripción larga.',
+      //   tags: ['Java', 'Forge'],
+      //   links: [ { label: 'Ver en GitHub', url: '#', icon: 'github' } ]
+      // }
 
     };
   </script>

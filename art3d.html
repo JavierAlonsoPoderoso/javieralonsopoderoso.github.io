@@ -33,6 +33,8 @@
 
   <!-- ══════════════════════════════════════════════════════
        COMPARADOR DE RENDER (antes / después)
+       Sigue con imágenes de relleno: sustituye los dos <div>
+       por <img> reales cuando tengas un render tuyo.
        ══════════════════════════════════════════════════════ -->
   <section class="projects-section">
 
@@ -43,27 +45,16 @@
       </div>
     </div>
 
-    <!--
-      Comparador de imagen — arrastra el slider horizontal para revelar el render.
-      Sustituye los src de las imágenes por tus renders reales.
-      Para añadir más comparadores: copia el bloque .img-compare completo.
-    -->
     <div style="margin-bottom: 3rem;">
       <p class="label" style="margin-bottom: 0.75rem;">Render — sin/con iluminación</p>
 
       <div class="img-compare">
-        <!--
-          ANTES (imagen de fondo, sin render):
-          <img class="img-compare-before" src="assets/images/render-01-before.jpg" alt="Sin render">
-        -->
+        <!-- ANTES. Con imagen real: <img class="img-compare-before" src="assets/images/render-01-before.jpg" alt="Sin render"> -->
         <div class="img-compare-before" style="background: linear-gradient(135deg, #1a2233, #0b1220); display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:0.8rem; letter-spacing:0.05em;">
           IMAGEN ANTES (sin render)
         </div>
 
-        <!--
-          DESPUÉS (imagen encima, con render):
-          <img class="img-compare-after" src="assets/images/render-01-after.jpg" alt="Con render">
-        -->
+        <!-- DESPUÉS. Con imagen real: <img class="img-compare-after" src="assets/images/render-01-after.jpg" alt="Con render"> -->
         <div class="img-compare-after" style="background: linear-gradient(135deg, #a07dd6, #3a2060); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.6); font-size:0.8rem; letter-spacing:0.05em; clip-path:inset(0 50% 0 0);">
           IMAGEN DESPUÉS (con render)
         </div>
@@ -80,8 +71,12 @@
 
   <!-- ══════════════════════════════════════════════════════
        PROYECTOS DE ARTE
-       Para GIFs cortos (ciclo de caminata, etc.): usa <img class="project-gif" src="...gif">
-       Para animaciones largas o reel: usa un enlace a YouTube en el flyout.
+       Para añadir un proyecto:
+       1. Copia la PLANTILLA de abajo (sin las marcas de comentario)
+       2. Cambia data-id y el id en onclick (ej: art-001)
+       3. Añade el objeto con ese mismo id en PROJECTS_ART (final del archivo)
+       GIF corto: <img class="project-gif" src="...gif"> dentro de .project-card-thumb
+       Vídeo largo: enlace a YouTube en "links" del flyout
        ══════════════════════════════════════════════════════ -->
   <section class="projects-section" style="padding-top: 0;">
 
@@ -94,88 +89,21 @@
 
     <div class="projects-grid">
 
-      <!-- ── PROYECTO 1 — render estático ──────────────── -->
-      <article class="project-card"
-        data-id="art-001"
+      <!-- PLANTILLA (copia y pega dentro de .projects-grid)
+      <article class="project-card" data-id="art-001"
         onclick="openFlyout(PROJECTS_ART['art-001'])">
-
-        <div class="project-card-thumb">
-          <!--
-            Para render estático:
-            <img src="assets/images/art-001.jpg" alt="Render personaje">
-          -->
-          RENDER · IMAGEN
-        </div>
-
+        <div class="project-card-thumb">RENDER · IMAGEN</div>
         <p class="project-card-type">MODELADO · RENDER</p>
-        <h3>Personaje — estilo flat 2D</h3>
-        <p>Personaje 3D con shading cel-shaded para conseguir estética de anime flat. Modelado, rigging y render.</p>
-
+        <h3>Título del proyecto</h3>
+        <p>Descripción corta.</p>
         <div class="project-card-footer">
-          <div class="project-card-tags">
-            <span>Blender</span>
-            <span>Cel-shading</span>
-            <span>Rigging</span>
-          </div>
+          <div class="project-card-tags"><span>Blender</span><span>Tag 2</span></div>
           <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
         </div>
       </article>
+      -->
 
-      <!-- ── PROYECTO 2 — animación con GIF ────────────── -->
-      <article class="project-card"
-        data-id="art-002"
-        onclick="openFlyout(PROJECTS_ART['art-002'])">
-
-        <div class="project-card-thumb">
-          <!--
-            Para GIF de animación corta (walk cycle, etc.):
-            <img class="project-gif" src="assets/images/walkcycle.gif" alt="Walk cycle">
-          -->
-          GIF · ANIMACIÓN
-        </div>
-
-        <p class="project-card-type">ANIMACIÓN</p>
-        <h3>Walk Cycle</h3>
-        <p>Ciclo de caminata completo en 24fps. Base para animaciones de personaje en proyectos de juego.</p>
-
-        <div class="project-card-footer">
-          <div class="project-card-tags">
-            <span>Blender</span>
-            <span>24fps</span>
-            <span>Loop</span>
-          </div>
-          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
-        </div>
-      </article>
-
-      <!-- ── PROYECTO 3 — animación larga con enlace YT ── -->
-      <article class="project-card"
-        data-id="art-003"
-        onclick="openFlyout(PROJECTS_ART['art-003'])">
-
-        <div class="project-card-thumb">
-          <!--
-            Para preview de vídeo: puedes usar un thumbnail estático
-            <img src="assets/images/art-003-thumb.jpg" alt="Animación corta">
-          -->
-          THUMBNAIL · VÍDEO
-        </div>
-
-        <p class="project-card-type">ANIMACIÓN · CORTOMETRAJE</p>
-        <h3>Escena de prueba</h3>
-        <p>Escena corta completa con iluminación, cámara animada y postprocesado. Enlace a canal de YouTube.</p>
-
-        <div class="project-card-footer">
-          <div class="project-card-tags">
-            <span>Blender</span>
-            <span>Iluminación</span>
-            <span>Compositing</span>
-          </div>
-          <span style="font-size:0.8rem; color:var(--text-muted)">Ver en YT →</span>
-        </div>
-      </article>
-
-      <!-- ── PLACEHOLDER ────────────────────────────────── -->
+      <!-- PLACEHOLDER — se queda hasta que añadas el primer proyecto real -->
       <article class="project-card project-card-empty">
         <div class="project-card-thumb">PRÓXIMAMENTE</div>
         <p class="project-card-type">EN PROGRESO</p>
@@ -189,47 +117,23 @@
     </div>
   </section>
 
-  <!-- FLYOUT -->
+  <!-- FLYOUT — panel lateral (el contenido lo inyecta openFlyout() en main.js) -->
   <div class="flyout-overlay" id="flyout-overlay">
     <aside class="flyout-panel" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
     </aside>
   </div>
 
-  <!-- ══════════════════════════════════════════════════════
-       DATOS DE PROYECTOS ARTE 3D
-       ══════════════════════════════════════════════════════ -->
+  <!-- DATOS DE PROYECTOS ARTE 3D — un objeto por proyecto, la clave = data-id -->
   <script>
     const PROJECTS_ART = {
 
-      'art-001': {
-        type: 'MODELADO · RENDER',
-        title: 'Personaje — estilo flat 2D',
-        desc: 'Personaje 3D modelado y rigged en Blender. El reto principal fue conseguir la estética de anime flat (similar a Your Name) usando cel-shading y contornos procedurales, sin que pareciera un render 3D convencional.',
-        tags: ['Blender', 'Cel-shading', 'Freestyle', 'Rigging', 'Render Cycles'],
-        links: [
-          // { label: 'Ver en ArtStation', url: '#', icon: 'external' }
-        ]
-      },
-
-      'art-002': {
-        type: 'ANIMACIÓN',
-        title: 'Walk Cycle',
-        desc: 'Ciclo de caminata completo de 12 frames en 24fps (principio de pose-to-pose). Exportado como GIF y como secuencia PNG para uso en proyectos de juego.',
-        tags: ['Blender', '24fps', 'Loop', 'Pose-to-pose', 'NLA Editor'],
-        links: [
-          // { label: 'Ver vídeo completo', url: '#', icon: 'yt' }
-        ]
-      },
-
-      'art-003': {
-        type: 'ANIMACIÓN · CORTOMETRAJE',
-        title: 'Escena de prueba',
-        desc: 'Escena corta completa: personaje animado, iluminación tres puntos, cámara con animación de path y postprocesado en compositor de Blender. Duración aproximada: 30 segundos.',
-        tags: ['Blender', 'Iluminación 3 puntos', 'Camera path', 'Compositor', 'EEVEE'],
-        links: [
-          // { label: 'Ver en YouTube', url: '#', icon: 'yt' }
-        ]
-      }
+      // 'art-001': {
+      //   type: 'MODELADO · RENDER',
+      //   title: 'Título',
+      //   desc: 'Descripción larga.',
+      //   tags: ['Blender', 'Cel-shading'],
+      //   links: [ { label: 'Ver en YouTube', url: '#', icon: 'yt' } ]
+      // }
 
     };
   </script>

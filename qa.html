@@ -32,8 +32,10 @@
 
   <!-- ══════════════════════════════════════════════════════
        SECCIÓN DE PROYECTOS
-       Para añadir un proyecto: copia un .project-card completo,
-       actualiza los data-* y añade el objeto en PROJECTS_QA de main.js.
+       Para añadir un proyecto:
+       1. Copia la PLANTILLA de abajo (sin las marcas de comentario)
+       2. Cambia data-id y el id en onclick (ej: qa-001)
+       3. Añade el objeto con ese mismo id en PROJECTS_QA (final del archivo)
        ══════════════════════════════════════════════════════ -->
   <section class="projects-section">
 
@@ -46,77 +48,21 @@
 
     <div class="projects-grid">
 
-      <!-- ── PROYECTO 1 ─────────────────────────────────── -->
-      <article class="project-card"
-        data-id="qa-001"
+      <!-- PLANTILLA (copia y pega dentro de .projects-grid)
+      <article class="project-card" data-id="qa-001"
         onclick="openFlyout(PROJECTS_QA['qa-001'])">
-
-        <div class="project-card-thumb">
-          <!-- Cuando tengas imagen: <img src="assets/images/qa-001.png" alt="Bug report screenshot"> -->
-          IMAGEN / SCREENSHOT
-        </div>
-
+        <div class="project-card-thumb">IMAGEN / SCREENSHOT</div>
         <p class="project-card-type">BUG REPORT</p>
-        <h3>Platform Collision Issue</h3>
-        <p>Reporte completo de colisión defectuosa en slopes dentro de un platformer 2D. Incluye pasos de reproducción, evidencias y severidad.</p>
-
+        <h3>Título del proyecto</h3>
+        <p>Descripción corta.</p>
         <div class="project-card-footer">
-          <div class="project-card-tags">
-            <span>Unity 2023</span>
-            <span>Windows 11</span>
-            <span>Severity: High</span>
-          </div>
+          <div class="project-card-tags"><span>Tag 1</span><span>Tag 2</span></div>
           <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
         </div>
       </article>
+      -->
 
-      <!-- ── PROYECTO 2 ─────────────────────────────────── -->
-      <article class="project-card"
-        data-id="qa-002"
-        onclick="openFlyout(PROJECTS_QA['qa-002'])">
-
-        <div class="project-card-thumb">
-          IMAGEN / SCREENSHOT
-        </div>
-
-        <p class="project-card-type">TEST PLAN</p>
-        <h3>Movement Testing Suite</h3>
-        <p>Casos de test para validar movimiento, salto y colisiones en prototipo 2D. Formato TestRail simulado con tabla de resultados.</p>
-
-        <div class="project-card-footer">
-          <div class="project-card-tags">
-            <span>TestRail</span>
-            <span>Excel</span>
-            <span>Gameplay QA</span>
-          </div>
-          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
-        </div>
-      </article>
-
-      <!-- ── PROYECTO 3 ─────────────────────────────────── -->
-      <article class="project-card"
-        data-id="qa-003"
-        onclick="openFlyout(PROJECTS_QA['qa-003'])">
-
-        <div class="project-card-thumb">
-          IMAGEN / SCREENSHOT
-        </div>
-
-        <p class="project-card-type">ACCESIBILIDAD</p>
-        <h3>Accessibility Review</h3>
-        <p>Checklist de accesibilidad aplicado a un juego indie. Contraste de color, subtítulos, remapping de controles y navegación sin ratón.</p>
-
-        <div class="project-card-footer">
-          <div class="project-card-tags">
-            <span>UX Testing</span>
-            <span>Color Contrast</span>
-            <span>Subtitles</span>
-          </div>
-          <span style="font-size:0.8rem; color:var(--text-muted)">Ver detalles →</span>
-        </div>
-      </article>
-
-      <!-- ── PLACEHOLDER — próximo proyecto ────────────── -->
+      <!-- PLACEHOLDER — se queda hasta que añadas el primer proyecto real -->
       <article class="project-card project-card-empty">
         <div class="project-card-thumb">PRÓXIMAMENTE</div>
         <p class="project-card-type">EN PROGRESO</p>
@@ -130,73 +76,23 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════════════
-       FLYOUT — panel lateral de detalle de proyecto
-       No toques esta estructura; el contenido se inyecta via JS.
-       ══════════════════════════════════════════════════════ -->
+  <!-- FLYOUT — panel lateral (el contenido lo inyecta openFlyout() en main.js) -->
   <div class="flyout-overlay" id="flyout-overlay">
     <aside class="flyout-panel" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
-      <!-- Contenido inyectado por openFlyout() en main.js -->
     </aside>
   </div>
 
-  <!-- ══════════════════════════════════════════════════════
-       DATOS DE PROYECTOS QA
-       Edita este objeto para actualizar los detalles del flyout
-       sin tocar el HTML de las tarjetas.
-       ══════════════════════════════════════════════════════ -->
+  <!-- DATOS DE PROYECTOS QA — un objeto por proyecto, la clave = data-id -->
   <script>
     const PROJECTS_QA = {
 
-      'qa-001': {
-        type: 'BUG REPORT',
-        title: 'Platform Collision Issue',
-        desc: 'El personaje atraviesa el collider en plataformas con pendiente (slope) al aterrizar en el borde. Reporte completo con pasos de reproducción, entorno y evidencias.',
-        tags: ['Unity 2023.2', 'C#', 'Windows 11', 'Build Debug', 'Severity: High'],
-        // extra: puedes poner HTML aquí, por ejemplo una imagen del bug
-        extra: `
-          <div class="flyout-divider"></div>
-          <p class="flyout-meta-label">Formato del reporte</p>
-          <pre style="font-size:0.78rem; color:var(--text-secondary); line-height:1.6; overflow-x:auto; background:var(--bg-base); padding:1rem; border-radius:10px; margin-top:0.5rem;">
-ID: BUG-001
-Severidad: Alta · Prioridad: Media
-Estado: Abierto
-
-Pasos:
-1. Abrir nivel 3 del prototipo
-2. Moverse al borde inferior derecho
-   de la plataforma con pendiente
-3. Saltar y aterrizar en el borde
-
-Esperado: jugador permanece sobre la plataforma
-Obtenido: jugador cae a través del collider
-          </pre>
-        `,
-        links: [
-          // { label: 'Ver reporte completo (PDF)', url: '#', icon: 'pdf' },
-          // { label: 'Vídeo de reproducción', url: '#', icon: 'yt' }
-        ]
-      },
-
-      'qa-002': {
-        type: 'TEST PLAN',
-        title: 'Movement Testing Suite',
-        desc: 'Batería de casos de test para validar movimiento horizontal, salto simple/doble y colisiones en el prototipo v0.2. Formato compatible con TestRail.',
-        tags: ['TestRail', 'Excel', 'Gameplay QA', 'Unity 2023'],
-        links: [
-          // { label: 'Ver test plan (PDF)', url: '#', icon: 'pdf' }
-        ]
-      },
-
-      'qa-003': {
-        type: 'ACCESIBILIDAD',
-        title: 'Accessibility Review',
-        desc: 'Checklist de accesibilidad aplicado a un juego indie. Cubre contraste de color (WCAG AA), subtítulos, remapping de controles y navegación completa sin ratón.',
-        tags: ['UX Testing', 'WCAG AA', 'Color Contrast', 'Subtitles', 'Input Remapping'],
-        links: [
-          // { label: 'Ver checklist (PDF)', url: '#', icon: 'pdf' }
-        ]
-      }
+      // 'qa-001': {
+      //   type: 'BUG REPORT',
+      //   title: 'Título',
+      //   desc: 'Descripción larga.',
+      //   tags: ['Tag 1', 'Tag 2'],
+      //   links: [ { label: 'Ver reporte', url: '#', icon: 'pdf' } ]
+      // }
 
     };
   </script>
